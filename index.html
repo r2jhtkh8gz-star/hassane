@@ -20,6 +20,9 @@
   .edit{background:#ffa502}.del{background:#ff4757}
   .footer{font-size:12px;color:#888;margin-top:12px}
   #panelModif{display:none;background:#fffbe6;padding:15px;border-radius:15px;margin-top:10px;text-align:left}
+  .imgGalerie{width:100%;border-radius:15px;margin:8px 0}
+  .imgBox{position:relative;background:#f1f2f6;padding:10px;border-radius:15px;margin:8px 0}
+  .fileLabel{display:block;background:#1e90ff;color:white;padding:14px;border-radius:15px;font-weight:bold;cursor:pointer;margin:5px 0}
 </style>
 </head>
 <body>
@@ -32,36 +35,17 @@
   <button class="saveBtn" style="background:#f39c12" onclick="ouvrirModif()">⚙️ MODIFIER TOUT TOUT TOUT</button>
 
   <div id="panelModif">
-    <h3>⚙️ TU PEUX TOUT CHANGER ICI :</h3>
-    <label><b>1. Ton Nom :</b></label>
-    <input id="modNom" placeholder="Ton nom">
-    <label><b>2. Ta Classe :</b></label>
-    <input id="modClasse" placeholder="Ex: Terminale D">
-    <label><b>3. Lien de ta Photo :</b></label>
-    <input id="modPhoto" placeholder="Colle le lien de ta photo">
-    <label><b>4. Couleur du site :</b></label>
-    <select id="modCouleur">
-      <option value="#1e90ff">Bleu</option>
-      <option value="#ff4757">Rouge</option>
-      <option value="#2ed573">Vert</option>
-      <option value="#a55eea">Violet</option>
-      <option value="#ffa502">Orange</option>
-      <option value="#2f3542">Noir</option>
-    </select>
-    <label><b>5. Modifier un conseil :</b></label>
-    <select id="matiereModif" onchange="chargerConseil()">
-      <option value="philo">Philosophie</option>
-      <option value="maths">Mathématiques</option>
-      <option value="arabe">Arabe</option>
-      <option value="histoire">Histoire</option>
-      <option value="geo">Géographie</option>
-      <option value="physique">Physique</option>
-      <option value="chimie">Chimie</option>
-      <option value="anglais">Anglais</option>
-    </select>
+    <h3>⚙️ TU PEUX TOUT CHANGER :</h3>
+    <label><b>Ton Nom :</b></label><input id="modNom" placeholder="Ton nom">
+    <label><b>Ta Classe :</b></label><input id="modClasse" placeholder="Ex: Terminale D">
+    <label><b>Ta Photo de profil :</b></label>
+    <label class="fileLabel">📸 CHOISIR MA PHOTO DE PROFIL<input type="file" accept="image/*" onchange="changerPhoto(event)" style="display:none"></label>
+    <label><b>Couleur :</b></label>
+    <select id="modCouleur"><option value="#1e90ff">Bleu</option><option value="#ff4757">Rouge</option><option value="#2ed573">Vert</option><option value="#a55eea">Violet</option><option value="#ffa502">Orange</option><option value="#2f3542">Noir</option></select>
+    <label><b>Modifier un conseil :</b></label>
+    <select id="matiereModif" onchange="chargerConseil()"><option value="philo">Philosophie</option><option value="maths">Mathématiques</option><option value="arabe">Arabe</option><option value="histoire">Histoire</option><option value="geo">Géographie</option><option value="physique">Physique</option><option value="chimie">Chimie</option><option value="anglais">Anglais</option></select>
     <textarea id="texteConseil" rows="3"></textarea>
-    <button class="saveBtn" style="background:#2ed573" onclick="sauvegarderTout()">💾 SAUVEGARDER TOUTES MES MODIFICATIONS</button>
-    <button class="saveBtn" style="background:#ff4757" onclick="remettreZero()">🔄 Remettre comme au début</button>
+    <button class="saveBtn" style="background:#2ed573" onclick="sauvegarderTout()">💾 SAUVEGARDER TOUT</button>
   </div>
 
   <div id="boutons">
@@ -74,24 +58,29 @@
     <button class="btn b7" onclick="show('chimie')">🧪 CHIMIE</button>
     <button class="btn b8" onclick="show('anglais')">🇬🇧 ANGLAIS</button>
   </div>
-
   <div id="conseil">👆 Clique sur une matière, Hassan Mahamat Choukou !</div>
 
   <hr>
   <h3>➕ AJOUTER UN NOUVEAU BOUTON</h3>
-  <input id="nomBtn" placeholder="Ex: Sport, Informatique...">
-  <textarea id="conseilBtn" rows="2" placeholder="Écris le conseil..."></textarea>
+  <input id="nomBtn" placeholder="Ex: Sport, Informatique..."><textarea id="conseilBtn" rows="2" placeholder="Écris le conseil..."></textarea>
   <button class="saveBtn" style="background:#1e90ff" onclick="ajouterBouton()">➕ AJOUTER LE BOUTON</button>
 
   <hr>
-  <h3>📚 MES COURS - AJOUTER / MODIFIER / SUPPRIMER</h3>
-  <input id="titre" placeholder="Ex: Maths - Les fonctions">
-  <textarea id="texte" rows="3" placeholder="Écris ton cours..."></textarea>
+  <h3>📚 MES COURS - AJOUTER / MODIFIER</h3>
+  <input id="titre" placeholder="Ex: Maths - Les fonctions"><textarea id="texte" rows="3" placeholder="Écris ton cours..."></textarea>
   <button class="saveBtn" onclick="ajouter()">💾 ENREGISTRER MON COURS</button>
   <div id="liste"></div>
 
+  <hr>
+  <h3>📸 MES IMAGES - AJOUTER DES PHOTOS</h3>
+  <p style="font-size:13px">Hassan, prends en photo ton cahier, ton schéma, ton cours !</p>
+  <input id="titreImg" placeholder="Ex: Schéma Physique - Chapitre 1">
+  <label class="fileLabel">📸 CHOISIR UNE IMAGE DEPUIS MON TÉLÉPHONE<input type="file" accept="image/*" onchange="ajouterImage(event)" style="display:none"></label>
+  <div id="galerie"></div>
+  <button class="saveBtn" style="background:#ff4757" onclick="effacerImages()">🗑️ Effacer toutes mes images</button>
+
   <p><b>On va réussir le BAC ensemble ! 💪</b></p>
-  <div class="footer">Hamid & Hassan Mahamat Choukou - Dinguessou - 2026</div>
+  <div class="footer">Hamid & Hassan Mahamat Choukou - Dinguessou - 2026 - Avec l'aide de mon père ❤️</div>
 </div>
 
 <script>
@@ -107,85 +96,64 @@ var conseilsDefaut={
 };
 var conseils=JSON.parse(localStorage.getItem('conseilsHassan')||JSON.stringify(conseilsDefaut));
 function show(m){document.getElementById('conseil').innerHTML=conseils[m]||"Pas de conseil";}
-function ouvrirModif(){
-  var p=document.getElementById('panelModif');
-  p.style.display=(p.style.display=='none'||p.style.display=='')?'block':'none';
-  document.getElementById('modNom').value=document.getElementById('nomHassan').innerText.replace(' 👑','');
-  document.getElementById('modClasse').value=document.getElementById('classeHassan').innerText;
-  chargerConseil();
-}
-function chargerConseil(){
-  var m=document.getElementById('matiereModif').value;
-  // Enlever les balises pour modifier facilement
-  var txt=conseils[m].replace(/<[^>]*>/g,'');
-  document.getElementById('texteConseil').value=txt;
-}
+function ouvrirModif(){var p=document.getElementById('panelModif');p.style.display=(p.style.display=='none'||p.style.display=='')?'block':'none';document.getElementById('modNom').value=document.getElementById('nomHassan').innerText.replace(' 👑','');document.getElementById('modClasse').value=document.getElementById('classeHassan').innerText;chargerConseil();}
+function chargerConseil(){var m=document.getElementById('matiereModif').value;document.getElementById('texteConseil').value=conseils[m].replace(/<[^>]*>/g,'');}
 function sauvegarderTout(){
-  var nom=document.getElementById('modNom').value;
-  var classe=document.getElementById('modClasse').value;
-  var photo=document.getElementById('modPhoto').value;
-  var couleur=document.getElementById('modCouleur').value;
-  var matiere=document.getElementById('matiereModif').value;
-  var nouveauConseil=document.getElementById('texteConseil').value;
+  var nom=document.getElementById('modNom').value;var classe=document.getElementById('modClasse').value;var couleur=document.getElementById('modCouleur').value;var matiere=document.getElementById('matiereModif').value;var nouveauConseil=document.getElementById('texteConseil').value;
   if(nom) document.getElementById('nomHassan').innerText=nom+' 👑';
   if(classe) document.getElementById('classeHassan').innerText=classe;
-  if(photo) document.getElementById('photoHassan').src=photo;
   if(couleur) document.getElementById('nomHassan').style.color=couleur;
   if(nouveauConseil) conseils[matiere]="<b>"+nouveauConseil+"</b>";
-  // Sauvegarder tout dans le téléphone
-  localStorage.setItem('conseilsHassan',JSON.stringify(conseils));
-  localStorage.setItem('nomHassan',nom);
-  localStorage.setItem('classeHassan',classe);
-  localStorage.setItem('photoHassan',photo);
-  localStorage.setItem('couleurHassan',couleur);
-  alert('Bravo Hassan ! TOUT est modifié et enregistré ! 🎉');
-  document.getElementById('panelModif').style.display='none';
+  localStorage.setItem('conseilsHassan',JSON.stringify(conseils));localStorage.setItem('nomHassan',nom);localStorage.setItem('classeHassan',classe);localStorage.setItem('couleurHassan',couleur);
+  alert('Bravo ! TOUT est modifié ! 🎉');document.getElementById('panelModif').style.display='none';
 }
-function remettreZero(){
-  if(!confirm('Remettre tout comme au début ?')) return;
-  localStorage.clear(); location.reload();
+function changerPhoto(e){
+  var file=e.target.files[0]; if(!file) return;
+  var reader=new FileReader(); reader.onload=function(ev){document.getElementById('photoHassan').src=ev.target.result;localStorage.setItem('photoHassan',ev.target.result);alert('Photo de profil changée ! 📸');}; reader.readAsDataURL(file);
 }
 function ajouterBouton(){
-  var nom=document.getElementById('nomBtn').value;
-  var cons=document.getElementById('conseilBtn').value;
+  var nom=document.getElementById('nomBtn').value;var cons=document.getElementById('conseilBtn').value;
   if(!nom||!cons){alert('Écris le nom et le conseil !');return;}
-  var id='perso'+Date.now();
-  conseils[id]="<b>📚 "+nom+" :</b><br>"+cons;
-  localStorage.setItem('conseilsHassan',JSON.stringify(conseils));
-  var btn=document.createElement('button');
-  btn.className='btn bPerso'; btn.innerHTML='⭐ '+nom.toUpperCase();
-  btn.onclick=function(){show(id)};
-  document.getElementById('boutons').appendChild(btn);
-  alert('Bouton ajouté : '+nom);
+  var id='perso'+Date.now();conseils[id]="<b>📚 "+nom+" :</b><br>"+cons;localStorage.setItem('conseilsHassan',JSON.stringify(conseils));
+  var btn=document.createElement('button');btn.className='btn bPerso';btn.innerHTML='⭐ '+nom.toUpperCase();btn.onclick=function(){show(id)};document.getElementById('boutons').appendChild(btn);alert('Bouton ajouté : '+nom);
 }
 function afficher(){
-  var liste=document.getElementById('liste');
-  var data=JSON.parse(localStorage.getItem('coursHassan')||'[]');
-  liste.innerHTML='';
-  data.forEach(function(item,i){
-    liste.innerHTML+="<div class='coursItem'><b>"+item.titre+"</b><br>"+item.texte+"<br><br><button class='miniBtn edit' onclick='modifier("+i+")'>✏️ Modifier</button><button class='miniBtn del' onclick='supprimer("+i+")'>🗑️ Supprimer</button></div>";
+  var liste=document.getElementById('liste');var data=JSON.parse(localStorage.getItem('coursHassan')||'[]');liste.innerHTML='';
+  data.forEach(function(item,i){liste.innerHTML+="<div class='coursItem'><b>"+item.titre+"</b><br>"+item.texte+"<br><br><button class='miniBtn edit' onclick='modifier("+i+")'>✏️ Modifier</button><button class='miniBtn del' onclick='supprimer("+i+")'>🗑️ Supprimer</button></div>";});
+}
+function ajouter(){var t=document.getElementById('titre').value;var txt=document.getElementById('texte').value;if(!t||!txt){alert('Écris le titre et le cours !');return;}var data=JSON.parse(localStorage.getItem('coursHassan')||'[]');data.push({titre:t,texte:txt});localStorage.setItem('coursHassan',JSON.stringify(data));document.getElementById('titre').value='';document.getElementById('texte').value='';afficher();alert('Cours enregistré !');}
+function modifier(i){var data=JSON.parse(localStorage.getItem('coursHassan')||'[]');var nt=prompt('Modifier le titre :',data[i].titre);if(nt===null) return;var nx=prompt('Modifier le cours :',data[i].texte);if(nx===null) return;data[i].titre=nt;data[i].texte=nx;localStorage.setItem('coursHassan',JSON.stringify(data));afficher();}
+function supprimer(i){if(!confirm('Supprimer ce cours ?')) return;var data=JSON.parse(localStorage.getItem('coursHassan')||'[]');data.splice(i,1);localStorage.setItem('coursHassan',JSON.stringify(data));afficher();}
+// --- IMAGES ---
+function ajouterImage(e){
+  var file=e.target.files[0]; if(!file) return;
+  var titre=document.getElementById('titreImg').value||'Mon image';
+  var reader=new FileReader();
+  reader.onload=function(ev){
+    var images=JSON.parse(localStorage.getItem('imagesHassan')||'[]');
+    images.push({titre:titre,src:ev.target.result});
+    localStorage.setItem('imagesHassan',JSON.stringify(images));
+    document.getElementById('titreImg').value='';
+    afficherImages();
+    alert('Image ajoutée ! 📸');
+  };
+  reader.readAsDataURL(file);
+}
+function afficherImages(){
+  var gal=document.getElementById('galerie');
+  var images=JSON.parse(localStorage.getItem('imagesHassan')||'[]');
+  gal.innerHTML='';
+  images.forEach(function(img,i){
+    gal.innerHTML+="<div class='imgBox'><b>"+img.titre+"</b><br><img class='imgGalerie' src='"+img.src+"'><button class='miniBtn del' onclick='supprimerImage("+i+")'>🗑️ Supprimer cette image</button></div>";
   });
 }
-function ajouter(){
-  var t=document.getElementById('titre').value; var txt=document.getElementById('texte').value;
-  if(!t||!txt){alert('Écris le titre et le cours !');return;}
-  var data=JSON.parse(localStorage.getItem('coursHassan')||'[]');
-  data.push({titre:t,texte:txt}); localStorage.setItem('coursHassan',JSON.stringify(data));
-  document.getElementById('titre').value=''; document.getElementById('texte').value=''; afficher(); alert('Cours enregistré !');
-}
-function modifier(i){
-  var data=JSON.parse(localStorage.getItem('coursHassan')||'[]');
-  var nt=prompt('Modifier le titre :',data[i].titre); if(nt===null) return;
-  var nx=prompt('Modifier le cours :',data[i].texte); if(nx===null) return;
-  data[i].titre=nt; data[i].texte=nx; localStorage.setItem('coursHassan',JSON.stringify(data)); afficher();
-}
-function supprimer(i){ if(!confirm('Supprimer ce cours ?')) return; var data=JSON.parse(localStorage.getItem('coursHassan')||'[]'); data.splice(i,1); localStorage.setItem('coursHassan',JSON.stringify(data)); afficher(); }
-// Charger les infos sauvegardées
+function supprimerImage(i){if(!confirm('Supprimer cette image ?')) return;var images=JSON.parse(localStorage.getItem('imagesHassan')||'[]');images.splice(i,1);localStorage.setItem('imagesHassan',JSON.stringify(images));afficherImages();}
+function effacerImages(){if(confirm('Effacer toutes les images ?')){localStorage.removeItem('imagesHassan');afficherImages();}}
 if(localStorage.getItem('nomHassan')) document.getElementById('nomHassan').innerText=localStorage.getItem('nomHassan')+' 👑';
 if(localStorage.getItem('classeHassan')) document.getElementById('classeHassan').innerText=localStorage.getItem('classeHassan');
 if(localStorage.getItem('photoHassan')) document.getElementById('photoHassan').src=localStorage.getItem('photoHassan');
 if(localStorage.getItem('couleurHassan')) document.getElementById('nomHassan').style.color=localStorage.getItem('couleurHassan');
-afficher();
+afficher(); afficherImages();
 </script>
 </body>
 </html>
