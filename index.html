@@ -3,59 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pour Hassan Magamat Choukou 👑</title>
+<title>HASSAN MAHAMAT CHOUKOU 👑</title>
 <style>
-  body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#1e90ff,#00d2ff,#7bed9f);text-align:center;padding:20px}
-  .card{background:white;max-width:400px;margin:auto;padding:25px;border-radius:25px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-  .photo{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #1e90ff}
-  h1{color:#1e90ff;margin:10px 0 5px;font-size:22px}
-  h2{color:#57606f;font-size:15px;margin-top:0}
-  p{font-size:15px;line-height:1.6}
-  .btn{display:block;width:100%;background:#1e90ff;color:white;border:none;padding:14px;margin:8px 0;border-radius:15px;font-size:16px;font-weight:bold;cursor:pointer}
-  .btn2{background:#ff6b81}.btn3{background:#ffa502}.btn4{background:#2ed573}.btn5{background:#a55eea}
-  .callBtn{display:block;background:#25D366;color:white;padding:14px;border-radius:15px;text-decoration:none;font-weight:bold;margin:8px 0;font-size:16px}
-  .callBtn2{display:block;background:#2f3542;color:white;padding:14px;border-radius:15px;text-decoration:none;font-weight:bold;margin:8px 0;font-size:16px}
-  #conseil{background:#f1f2f6;padding:15px;border-radius:15px;margin-top:15px;font-size:15px;line-height:1.6;min-height:60px}
-  .footer{font-size:12px;color:#888;margin-top:15px}
+  body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);text-align:center;padding:15px}
+  .card{background:white;max-width:450px;margin:auto;padding:22px;border-radius:25px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+  .photo{width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid #1e90ff}
+  h1{color:#1e90ff;font-size:22px;margin:10px 0 5px}
+  h2{color:#57606f;font-size:14px;margin:0}
+  .btn{display:block;width:100%;border:none;padding:13px;margin:6px 0;border-radius:15px;font-size:16px;font-weight:bold;color:white;cursor:pointer}
+  .b1{background:#1e90ff}.b2{background:#ff6b81}.b3{background:#2ed573}.b4{background:#ffa502}.b5{background:#a55eea}.b6{background:#e84118}.b7{background:#00a8ff}.b8{background:#ff6348}.bPerso{background:#2f3542}
+  #conseil{background:#f1f2f6;padding:15px;border-radius:15px;margin-top:12px;font-size:15px;line-height:1.6;min-height:70px;text-align:left}
+  input,textarea,select{width:94%;padding:12px;margin:5px 0;border-radius:12px;border:1px solid #ddd;font-size:15px}
+  .saveBtn{background:#2f3542;color:white;padding:13px;border:none;border-radius:15px;width:100%;font-weight:bold;font-size:16px;cursor:pointer;margin:5px 0}
+  .coursItem{background:#dfe4ea;padding:12px;border-radius:12px;margin:7px 0;text-align:left;font-size:14px}
+  .miniBtn{padding:6px 10px;border:none;border-radius:8px;font-size:13px;font-weight:bold;cursor:pointer;margin-right:5px;color:white}
+  .edit{background:#ffa502}.del{background:#ff4757}
+  .footer{font-size:12px;color:#888;margin-top:12px}
+  #panelModif{display:none;background:#fffbe6;padding:15px;border-radius:15px;margin-top:10px;text-align:left}
 </style>
 </head>
 <body>
 <div class="card">
-  <img class="photo" src="https://via.placeholder.com/150" alt="Hassan">
-  <h1>HASSAN MAGAMAT CHOUKOU 👑</h1>
-  <h2>Mon Ami - Classe Terminale D - N'Djamena</h2>
-  <p><b>MERCI MON FRÈRE ! ❤️</b><br>
-  Merci pour tout. Tu es un vrai ami. Je te souhaite la réussite pour le BAC !<br>
-  <b>Clique sur les 5 boutons pour mes conseils :</b></p>
+  <img id="photoHassan" class="photo" src="https://via.placeholder.com/150" alt="Hassan">
+  <h1 id="nomHassan">HASSAN MAHAMAT CHOUKOU 👑</h1>
+  <h2 id="classeHassan">Terminale D - N'Djamena</h2>
+  <p><b>De ton frère Hamid - Terminale A4 ❤️</b><br>Mon frère, clique sur une matière :</p>
 
-  <button class="btn" onclick="show('1')">📐 1. CONSEIL MATHS</button>
-  <button class="btn btn2" onclick="show('2')">⚛️ 2. CONSEIL PHYSIQUE-CHIMIE</button>
-  <button class="btn btn3" onclick="show('3')">🧬 3. CONSEIL BIOLOGIE / SVT</button>
-  <button class="btn btn4" onclick="show('4')">📖 4. CONSEIL FRANÇAIS / PHILO</button>
-  <button class="btn btn5" onclick="show('5')">🏆 5. CONSEIL POUR RÉUSSIR LE BAC</button>
+  <button class="saveBtn" style="background:#f39c12" onclick="ouvrirModif()">⚙️ MODIFIER TOUT TOUT TOUT</button>
 
-  <div id="conseil">👆 Clique sur un bouton pour voir mon conseil, Hassan !</div>
+  <div id="panelModif">
+    <h3>⚙️ TU PEUX TOUT CHANGER ICI :</h3>
+    <label><b>1. Ton Nom :</b></label>
+    <input id="modNom" placeholder="Ton nom">
+    <label><b>2. Ta Classe :</b></label>
+    <input id="modClasse" placeholder="Ex: Terminale D">
+    <label><b>3. Lien de ta Photo :</b></label>
+    <input id="modPhoto" placeholder="Colle le lien de ta photo">
+    <label><b>4. Couleur du site :</b></label>
+    <select id="modCouleur">
+      <option value="#1e90ff">Bleu</option>
+      <option value="#ff4757">Rouge</option>
+      <option value="#2ed573">Vert</option>
+      <option value="#a55eea">Violet</option>
+      <option value="#ffa502">Orange</option>
+      <option value="#2f3542">Noir</option>
+    </select>
+    <label><b>5. Modifier un conseil :</b></label>
+    <select id="matiereModif" onchange="chargerConseil()">
+      <option value="philo">Philosophie</option>
+      <option value="maths">Mathématiques</option>
+      <option value="arabe">Arabe</option>
+      <option value="histoire">Histoire</option>
+      <option value="geo">Géographie</option>
+      <option value="physique">Physique</option>
+      <option value="chimie">Chimie</option>
+      <option value="anglais">Anglais</option>
+    </select>
+    <textarea id="texteConseil" rows="3"></textarea>
+    <button class="saveBtn" style="background:#2ed573" onclick="sauvegarderTout()">💾 SAUVEGARDER TOUTES MES MODIFICATIONS</button>
+    <button class="saveBtn" style="background:#ff4757" onclick="remettreZero()">🔄 Remettre comme au début</button>
+  </div>
 
-  <p><b>--- CONTACT ---</b></p>
+  <div id="boutons">
+    <button class="btn b1" onclick="show('philo')">🧠 PHILOSOPHIE</button>
+    <button class="btn b2" onclick="show('maths')">📐 MATHÉMATIQUES</button>
+    <button class="btn b3" onclick="show('arabe')">📖 ARABE</button>
+    <button class="btn b4" onclick="show('histoire')">🏛️ HISTOIRE</button>
+    <button class="btn b5" onclick="show('geo')">🌍 GÉOGRAPHIE</button>
+    <button class="btn b6" onclick="show('physique')">⚛️ PHYSIQUE</button>
+    <button class="btn b7" onclick="show('chimie')">🧪 CHIMIE</button>
+    <button class="btn b8" onclick="show('anglais')">🇬🇧 ANGLAIS</button>
+  </div>
 
-  <!-- 👇 ICI TU METS LE NUMERO DE HASSAN, TOI SEUL -->
-  <!-- Remplace NUMERO par son numéro sans espace, exemple : 23586638601 -->
-  <a class="callBtn" href="https://wa.me/NUMERO">💬 6. WHATSAPP HASSAN</a>
-  <a class="callBtn2" href="tel:+NUMERO">📞 7. APPELER HASSAN</a>
+  <div id="conseil">👆 Clique sur une matière, Hassan Mahamat Choukou !</div>
 
-  <p><b>De ton ami Hamid 👑<br>Dinguessou - Terminale A4</b></p>
-  <div class="footer">Fait avec amour - 2026 - Ne partage pas le numéro en public</div>
+  <hr>
+  <h3>➕ AJOUTER UN NOUVEAU BOUTON</h3>
+  <input id="nomBtn" placeholder="Ex: Sport, Informatique...">
+  <textarea id="conseilBtn" rows="2" placeholder="Écris le conseil..."></textarea>
+  <button class="saveBtn" style="background:#1e90ff" onclick="ajouterBouton()">➕ AJOUTER LE BOUTON</button>
+
+  <hr>
+  <h3>📚 MES COURS - AJOUTER / MODIFIER / SUPPRIMER</h3>
+  <input id="titre" placeholder="Ex: Maths - Les fonctions">
+  <textarea id="texte" rows="3" placeholder="Écris ton cours..."></textarea>
+  <button class="saveBtn" onclick="ajouter()">💾 ENREGISTRER MON COURS</button>
+  <div id="liste"></div>
+
+  <p><b>On va réussir le BAC ensemble ! 💪</b></p>
+  <div class="footer">Hamid & Hassan Mahamat Choukou - Dinguessou - 2026</div>
 </div>
 
 <script>
-function show(n){
-  var c = document.getElementById('conseil');
-  if(n=='1') c.innerHTML = "<b>📐 MATHS :</b><br>Mon frère, fais 1 exercice par jour, même 20 minutes. Relis les formules avant de dormir. Plus tu t'entraînes, plus tu deviens fort !";
-  if(n=='2') c.innerHTML = "<b>⚛️ PHYSIQUE-CHIMIE :</b><br>Apprends les formules par cœur, et fais les anciens sujets du BAC. Comprends la logique, ne mémorise pas bêtement. Tu peux le faire !";
-  if(n=='3') c.innerHTML = "<b>🧬 BIOLOGIE / SVT :</b><br>Fais des petits résumés avec tes propres mots. Dessine les schémas. Si tu peux expliquer le cours à quelqu'un, c'est que tu as compris.";
-  if(n=='4') c.innerHTML = "<b>📖 FRANÇAIS / PHILO :</b><br>Lis 10 minutes par jour. Apprends 3 citations par chapitre. Dissertation = Introduction - Développement - Conclusion. C'est la clé !";
-  if(n=='5') c.innerHTML = "<b>🏆 POUR RÉUSSIR LE BAC :</b><br>Hassan, dors bien, mange bien, ne stresse pas. Ne laisse jamais tomber. On va réussir ensemble, Terminale D et Terminale A4 ! Je crois en toi ! 💪";
+var conseilsDefaut={
+  philo:"<b>🧠 PHILOSOPHIE :</b><br>Apprends 3 citations par chapitre. Structure : Introduction - Thèse - Antithèse - Synthèse - Conclusion.",
+  maths:"<b>📐 MATHÉMATIQUES :</b><br>Fais 1 exercice par jour. Apprends les formules par cœur. Les anciens sujets du BAC sont tes meilleurs amis.",
+  arabe:"<b>📖 ARABE :</b><br>Lis 10 minutes en arabe chaque jour. Apprends le vocabulaire avec des petites cartes.",
+  histoire:"<b>🏛️ HISTOIRE :</b><br>Apprends les dates avec une frise. Retiens : Qui ? Quoi ? Quand ? Où ? Pourquoi ?",
+  geo:"<b>🌍 GÉOGRAPHIE :</b><br>Dessine les cartes à la main. Apprends les capitales, les fleuves. Relie à un exemple du Tchad.",
+  physique:"<b>⚛️ PHYSIQUE :</b><br>Comprends la formule avant de l'apprendre. Fais les schémas. Le dessin vaut 50% de la note.",
+  chimie:"<b>🧪 CHIMIE :</b><br>Apprends le tableau périodique petit à petit. Entraîne-toi sur les équations.",
+  anglais:"<b>🇬🇧 ANGLAIS :</b><br>Apprends 5 mots par jour. Regarde des vidéos en anglais. Practice makes perfect !"
+};
+var conseils=JSON.parse(localStorage.getItem('conseilsHassan')||JSON.stringify(conseilsDefaut));
+function show(m){document.getElementById('conseil').innerHTML=conseils[m]||"Pas de conseil";}
+function ouvrirModif(){
+  var p=document.getElementById('panelModif');
+  p.style.display=(p.style.display=='none'||p.style.display=='')?'block':'none';
+  document.getElementById('modNom').value=document.getElementById('nomHassan').innerText.replace(' 👑','');
+  document.getElementById('modClasse').value=document.getElementById('classeHassan').innerText;
+  chargerConseil();
 }
+function chargerConseil(){
+  var m=document.getElementById('matiereModif').value;
+  // Enlever les balises pour modifier facilement
+  var txt=conseils[m].replace(/<[^>]*>/g,'');
+  document.getElementById('texteConseil').value=txt;
+}
+function sauvegarderTout(){
+  var nom=document.getElementById('modNom').value;
+  var classe=document.getElementById('modClasse').value;
+  var photo=document.getElementById('modPhoto').value;
+  var couleur=document.getElementById('modCouleur').value;
+  var matiere=document.getElementById('matiereModif').value;
+  var nouveauConseil=document.getElementById('texteConseil').value;
+  if(nom) document.getElementById('nomHassan').innerText=nom+' 👑';
+  if(classe) document.getElementById('classeHassan').innerText=classe;
+  if(photo) document.getElementById('photoHassan').src=photo;
+  if(couleur) document.getElementById('nomHassan').style.color=couleur;
+  if(nouveauConseil) conseils[matiere]="<b>"+nouveauConseil+"</b>";
+  // Sauvegarder tout dans le téléphone
+  localStorage.setItem('conseilsHassan',JSON.stringify(conseils));
+  localStorage.setItem('nomHassan',nom);
+  localStorage.setItem('classeHassan',classe);
+  localStorage.setItem('photoHassan',photo);
+  localStorage.setItem('couleurHassan',couleur);
+  alert('Bravo Hassan ! TOUT est modifié et enregistré ! 🎉');
+  document.getElementById('panelModif').style.display='none';
+}
+function remettreZero(){
+  if(!confirm('Remettre tout comme au début ?')) return;
+  localStorage.clear(); location.reload();
+}
+function ajouterBouton(){
+  var nom=document.getElementById('nomBtn').value;
+  var cons=document.getElementById('conseilBtn').value;
+  if(!nom||!cons){alert('Écris le nom et le conseil !');return;}
+  var id='perso'+Date.now();
+  conseils[id]="<b>📚 "+nom+" :</b><br>"+cons;
+  localStorage.setItem('conseilsHassan',JSON.stringify(conseils));
+  var btn=document.createElement('button');
+  btn.className='btn bPerso'; btn.innerHTML='⭐ '+nom.toUpperCase();
+  btn.onclick=function(){show(id)};
+  document.getElementById('boutons').appendChild(btn);
+  alert('Bouton ajouté : '+nom);
+}
+function afficher(){
+  var liste=document.getElementById('liste');
+  var data=JSON.parse(localStorage.getItem('coursHassan')||'[]');
+  liste.innerHTML='';
+  data.forEach(function(item,i){
+    liste.innerHTML+="<div class='coursItem'><b>"+item.titre+"</b><br>"+item.texte+"<br><br><button class='miniBtn edit' onclick='modifier("+i+")'>✏️ Modifier</button><button class='miniBtn del' onclick='supprimer("+i+")'>🗑️ Supprimer</button></div>";
+  });
+}
+function ajouter(){
+  var t=document.getElementById('titre').value; var txt=document.getElementById('texte').value;
+  if(!t||!txt){alert('Écris le titre et le cours !');return;}
+  var data=JSON.parse(localStorage.getItem('coursHassan')||'[]');
+  data.push({titre:t,texte:txt}); localStorage.setItem('coursHassan',JSON.stringify(data));
+  document.getElementById('titre').value=''; document.getElementById('texte').value=''; afficher(); alert('Cours enregistré !');
+}
+function modifier(i){
+  var data=JSON.parse(localStorage.getItem('coursHassan')||'[]');
+  var nt=prompt('Modifier le titre :',data[i].titre); if(nt===null) return;
+  var nx=prompt('Modifier le cours :',data[i].texte); if(nx===null) return;
+  data[i].titre=nt; data[i].texte=nx; localStorage.setItem('coursHassan',JSON.stringify(data)); afficher();
+}
+function supprimer(i){ if(!confirm('Supprimer ce cours ?')) return; var data=JSON.parse(localStorage.getItem('coursHassan')||'[]'); data.splice(i,1); localStorage.setItem('coursHassan',JSON.stringify(data)); afficher(); }
+// Charger les infos sauvegardées
+if(localStorage.getItem('nomHassan')) document.getElementById('nomHassan').innerText=localStorage.getItem('nomHassan')+' 👑';
+if(localStorage.getItem('classeHassan')) document.getElementById('classeHassan').innerText=localStorage.getItem('classeHassan');
+if(localStorage.getItem('photoHassan')) document.getElementById('photoHassan').src=localStorage.getItem('photoHassan');
+if(localStorage.getItem('couleurHassan')) document.getElementById('nomHassan').style.color=localStorage.getItem('couleurHassan');
+afficher();
 </script>
 </body>
 </html>
