@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour Hassan Magamat Choukou 👑</title>
+<style>
+  body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#1e90ff,#00d2ff,#7bed9f);text-align:center;padding:20px}
+  .card{background:white;max-width:400px;margin:auto;padding:25px;border-radius:25px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .photo{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #1e90ff}
+  h1{color:#1e90ff;margin:10px 0 5px;font-size:22px}
+  h2{color:#57606f;font-size:15px;margin-top:0}
+  p{font-size:15px;line-height:1.6}
+  .btn{display:block;width:100%;background:#1e90ff;color:white;border:none;padding:14px;margin:8px 0;border-radius:15px;font-size:16px;font-weight:bold;cursor:pointer}
+  .btn2{background:#ff6b81}.btn3{background:#ffa502}.btn4{background:#2ed573}.btn5{background:#a55eea}
+  .callBtn{display:block;background:#25D366;color:white;padding:14px;border-radius:15px;text-decoration:none;font-weight:bold;margin:8px 0;font-size:16px}
+  .callBtn2{display:block;background:#2f3542;color:white;padding:14px;border-radius:15px;text-decoration:none;font-weight:bold;margin:8px 0;font-size:16px}
+  #conseil{background:#f1f2f6;padding:15px;border-radius:15px;margin-top:15px;font-size:15px;line-height:1.6;min-height:60px}
+  .footer{font-size:12px;color:#888;margin-top:15px}
+</style>
+</head>
+<body>
+<div class="card">
+  <img class="photo" src="https://via.placeholder.com/150" alt="Hassan">
+  <h1>HASSAN MAGAMAT CHOUKOU 👑</h1>
+  <h2>Mon Ami - Classe Terminale D - N'Djamena</h2>
+  <p><b>MERCI MON FRÈRE ! ❤️</b><br>
+  Merci pour tout. Tu es un vrai ami. Je te souhaite la réussite pour le BAC !<br>
+  <b>Clique sur les 5 boutons pour mes conseils :</b></p>
+
+  <button class="btn" onclick="show('1')">📐 1. CONSEIL MATHS</button>
+  <button class="btn btn2" onclick="show('2')">⚛️ 2. CONSEIL PHYSIQUE-CHIMIE</button>
+  <button class="btn btn3" onclick="show('3')">🧬 3. CONSEIL BIOLOGIE / SVT</button>
+  <button class="btn btn4" onclick="show('4')">📖 4. CONSEIL FRANÇAIS / PHILO</button>
+  <button class="btn btn5" onclick="show('5')">🏆 5. CONSEIL POUR RÉUSSIR LE BAC</button>
+
+  <div id="conseil">👆 Clique sur un bouton pour voir mon conseil, Hassan !</div>
+
+  <p><b>--- CONTACT ---</b></p>
+
+  <!-- 👇 ICI TU METS LE NUMERO DE HASSAN, TOI SEUL -->
+  <!-- Remplace NUMERO par son numéro sans espace, exemple : 23586638601 -->
+  <a class="callBtn" href="https://wa.me/NUMERO">💬 6. WHATSAPP HASSAN</a>
+  <a class="callBtn2" href="tel:+NUMERO">📞 7. APPELER HASSAN</a>
+
+  <p><b>De ton ami Hamid 👑<br>Dinguessou - Terminale A4</b></p>
+  <div class="footer">Fait avec amour - 2026 - Ne partage pas le numéro en public</div>
+</div>
+
+<script>
+function show(n){
+  var c = document.getElementById('conseil');
+  if(n=='1') c.innerHTML = "<b>📐 MATHS :</b><br>Mon frère, fais 1 exercice par jour, même 20 minutes. Relis les formules avant de dormir. Plus tu t'entraînes, plus tu deviens fort !";
+  if(n=='2') c.innerHTML = "<b>⚛️ PHYSIQUE-CHIMIE :</b><br>Apprends les formules par cœur, et fais les anciens sujets du BAC. Comprends la logique, ne mémorise pas bêtement. Tu peux le faire !";
+  if(n=='3') c.innerHTML = "<b>🧬 BIOLOGIE / SVT :</b><br>Fais des petits résumés avec tes propres mots. Dessine les schémas. Si tu peux expliquer le cours à quelqu'un, c'est que tu as compris.";
+  if(n=='4') c.innerHTML = "<b>📖 FRANÇAIS / PHILO :</b><br>Lis 10 minutes par jour. Apprends 3 citations par chapitre. Dissertation = Introduction - Développement - Conclusion. C'est la clé !";
+  if(n=='5') c.innerHTML = "<b>🏆 POUR RÉUSSIR LE BAC :</b><br>Hassan, dors bien, mange bien, ne stresse pas. Ne laisse jamais tomber. On va réussir ensemble, Terminale D et Terminale A4 ! Je crois en toi ! 💪";
+}
+</script>
+</body>
+</html>
